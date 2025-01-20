@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+<h1>Détail d'une entreprise</h1>
+
+<h2> {{ entreprise }} </h2>
+
+<p> 
+    Adresse: {{ entreprise.adresseComplete }} <br>
+    Date de création: {{ entreprise.dateCreation|date("d/m/Y") }}
+</p>
+
+
+
+<h3>Liste des employés</h3>
+{% if entreprise.employes| length > 0 %}
+    <table class="table table-striped">
+        <thead>
+            <th>Employe</th>
+        </thead>
+        <tbody>
+
+            {% for employe in entreprise.employes %}
+                <tr><td><a href="{{ path('show_employe', {'id':employe.id}) }}"> {{employe}} </a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+            {% else %}
+            <p>Aucun salarié dans cette entreprise</p>
+            {% endif %}
+
+{% endblock %}
