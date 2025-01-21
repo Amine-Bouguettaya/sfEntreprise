@@ -6,7 +6,10 @@
 <h1>Liste des employés</h1>
 
 {% for employe in employes %}
-<a href="{{ path("show_employe", {'id': employe.id}) }}">{{ employe }}</a> {{employe.entreprise.raisonSociale}} <br>
+<a href="{{ path("show_employe", {'id': employe.id}) }}">{{ employe }}</a> {{employe.entreprise.raisonSociale}} 
+<a href="{{ path('edit_employe',{'id': employe.id}) }}" class="btn btn-warning">Edit</a>
+<a href="{{ path('delete_employe', {'id': employe.id}) }}" class="btn btn-danger">delete</a>
+<br>
 {% endfor %}
 
 
